@@ -345,7 +345,7 @@ h3 {
 .ticker-content {
   display: flex;
   width: max-content;
-  animation: ticker 48s linear infinite;
+  animation: ticker 60s linear 1.5s infinite;
 }
 .ticker-content span { padding-right: 80px; white-space: nowrap; }
 .ticker:hover .ticker-content { animation-play-state: paused; }

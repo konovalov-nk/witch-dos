@@ -349,6 +349,10 @@
     });
   });
 
+  $$('[data-fkey="help"]').forEach((btn) => {
+    btn.addEventListener('click', () => openDialog('СПРАВКА', HELP_HTML));
+  });
+
   /* ─────────── terminal ─────────── */
   const term = $('#term');
   const termwin = $('.termwin');
@@ -775,7 +779,7 @@
       '     /  \\   HAHA,',
       '    /____\\  CLASSIC.',
       '',
-      '  (это была пасхалка.'
+      '  (это была пасхалка)'
     ].join('\n');
   }
 
