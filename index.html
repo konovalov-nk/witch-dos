@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WITCH-DOS 1.0 — @mentaIlyillgirl</title>
+<meta name="description" content="Демо персонального сайта в стиле DOS: ведьма, 2000-е, CRT и командная строка.">
+<meta property="og:title" content="WITCH-DOS 1.0 — @mentaIlyillgirl">
+<meta property="og:description" content="Демо персонального сайта в стиле DOS: ведьма, 2000-е, CRT и командная строка.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#070012">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<noscript><style>#boot{display:none!important}#desktop{display:block!important}</style></noscript>
+</head>
+<body class="crt">
+
+<!-- ══════════════════ BOOT ══════════════════ -->
+<div id="boot" class="boot" aria-label="Загрузка системы">
+  <div class="boot-inner">
+    <pre id="bootlog" class="bootlog"></pre>
+    <div class="boot-progress">
+      <span class="boot-label">LOADING</span>
+      <div class="boot-bar"><i id="bootBar"></i></div>
+      <span id="bootPct" class="boot-pct">0%</span>
+    </div>
+    <div class="boot-skip">нажми любую клавишу или <button id="skipBoot" type="button">[ ПРОПУСТИТЬ ]</button></div>
+  </div>
+</div>
+
+<!-- ══════════════════ DESKTOP ══════════════════ -->
+<div id="desktop" class="desktop" hidden>
+  <div class="frame">
+
+    <!-- top bar -->
+    <header class="topbar">
+      <button class="brand" data-page="home" type="button" title="На главную">
+        <span class="brand-glyph">▓</span> WITCH-DOS <span class="brand-ver">1.0</span>
+      </button>
+      <nav class="menu" aria-label="Меню">
+        <button type="button" data-menu="file">ФАЙЛ</button>
+        <button type="button" data-menu="view">ВИД</button>
+        <button type="button" data-menu="help">СПРАВКА</button>
+      </nav>
+      <div class="topright">
+        <span class="demo-badge">DEMO</span>
+        <button id="soundBtn" class="topbtn" type="button" title="Звук PC-спикера">♪ ВЫКЛ</button>
+        <button id="crtBtn" class="topbtn" type="button" title="CRT-эффект">CRT ВКЛ</button>
+        <span id="clock" class="clock">--:--:--</span>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <main class="main">
+
+        <!-- tabs -->
+        <nav class="tabs" aria-label="Разделы">
+          <button class="tab is-active" data-page="home" type="button">HOME</button>
+          <button class="tab" data-page="magic" type="button">МАГИЯ</button>
+          <button class="tab" data-page="whoami" type="button">О СЕБЕ</button>
+          <button class="tab" data-page="diary" type="button">ЗАПИСКИ</button>
+          <button class="tab" data-page="guest" type="button">ГОСТЕВАЯ</button>
+          <button class="tab" data-page="links" type="button">ССЫЛКИ</button>
+        </nav>
+
+        <!-- HOME -->
+        <section class="window page is-active" id="page-home" data-page="home">
+          <div class="winbar">
+            <span class="win-title">C:\HOME\README.TXT</span>
+            <span class="win-meta">DEMO BUILD</span>
+          </div>
+          <div class="win-body">
+            <div class="ticker" aria-hidden="true"><div class="ticker-content"><span>*** WITCH-DOS 1.0 *** сайт девочек-волшебниц: обнаружен *** «уж слишком это прикольно выглядит» *** HAHA, CLASSIC *** не забудь про гостевую *** сделано на промпт «вайб для веб 2000-е» ***</span><span>*** WITCH-DOS 1.0 *** сайт девочек-волшебниц: обнаружен *** «уж слишком это прикольно выглядит» *** HAHA, CLASSIC *** не забудь про гостевую *** сделано на промпт «вайб для веб 2000-е» ***</span></div></div>
+            <div class="hero">
+              <div class="hero-art">
+                <div class="avatar-frame">
+                  <img src="favicon.svg" width="144" height="144" alt="Пиксельная ведьма — заглушка аватарки">
+                </div>
+                <div class="avatar-caption">&lt; твоя аватарка &gt;</div>
+              </div>
+              <div class="hero-text">
+                <pre class="logo" aria-label="WITCH-DOS"> ██╗    ██╗██╗████████╗ ██████╗██╗  ██╗    ██████╗  ██████╗ ███████╗
+ ██║    ██║██║╚══██╔══╝██╔════╝██║  ██║    ██╔══██╗██╔═══██╗██╔════╝
+ ██║ █╗ ██║██║   ██║   ██║     ███████║    ██║  ██║██║   ██║███████╗
+ ██║███╗██║██║   ██║   ██║     ██╔══██║    ██║  ██║██║   ██║╚════██║
+ ╚███╔███╔╝██║   ██║   ╚██████╗██║  ██║    ██████╔╝╚██████╔╝███████║
+  ╚══╝╚══╝ ╚═╝   ╚═╝    ╚═════╝╚═╝  ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝</pre>
+                <p class="tagline">персональная страница · <span class="pink">ведьма</span> · 2000-е внутри</p>
+                <blockquote class="quote">
+                  «если я всё же когда-нибудь дойду до того, чтобы себе сайт сделать,
+                  он будет в стиле DOS — уж слишком это прикольно выглядит»
+                  <cite>— @mentaIlyillgirl, 18.11.2026</cite>
+                </blockquote>
+                <p class="ok">ну вот. дожили. сайт есть.<span class="blink">█</span></p>
+              </div>
+            </div>
+
+            <div class="home-bottom">
+              <div class="news">
+                <h3>▌ СВОДКА</h3>
+                <ul class="news-list">
+                  <li><span class="news-date">18.11.2026</span><span>демка собрана. дедлайн был вчера.</span></li>
+                  <li><span class="news-date">18.11.2026</span><span>«имеется некоторая вайбик» — комиссия одобрила.</span></li>
+                  <li><span class="news-date">18.11.2026</span><span>сайт девочек-волшебниц: обнаружен.</span></li>
+                  <li><span class="news-date">18.11.2026</span><span>HAHA, CLASSIC.</span></li>
+                </ul>
+              </div>
+              <div class="badges" aria-label="Кнопки 88x31">
+                <span class="badge badge-pink">WITCH<br>APPROVED</span>
+                <span class="badge badge-cyan">MADE<br>BY br11k</span>
+                <span class="badge badge-yellow">BEST VIEWED<br>800×600</span>
+                <span class="badge badge-green">NO<br>COOKIES</span>
+                <span class="badge badge-purple">HAHA<br>CLASSIC</span>
+              </div>
+            </div>
+
+            <p class="hint">▸ введи <code>help</code> в командной строке или жми <span class="key">F2</span> для магии</p>
+          </div>
+        </section>
+
+        <!-- MAGIC -->
+        <section class="window page" id="page-magic" data-page="magic" hidden>
+          <div class="winbar">
+            <span class="win-title">C:\MAGIC\SPELLBOOK.EXE</span>
+            <span class="win-meta">MANA 100</span>
+          </div>
+          <div class="win-body">
+            <p class="muted">Нажми кнопку. Вселенная (и этот скрипт) решит за тебя.</p>
+
+            <div class="cast-row">
+              <button id="castBtn" class="bigbtn" type="button">★ СКАСТОВАТЬ ★</button>
+              <div class="mana">
+                <span class="mana-label">МАНА</span>
+                <div class="bar" aria-hidden="true"><i id="manaFill"></i></div>
+                <b id="manaVal">100/100</b>
+              </div>
+            </div>
+
+            <pre id="spellOut" class="output-box">[ ожидание заклинания ]</pre>
+
+            <h3>▌ КНИГА ЗАКЛИНАНИЙ</h3>
+            <div class="spellbook">
+              <article><b>Снятие проклятия node_modules</b><span>ур. 3 · 15 маны</span><p>Удаляет папку. Вместе с ней — 400 МБ и веру в человечество.</p></article>
+              <article><b>Щит от мердж-конфликтов</b><span>ур. 2 · 10 маны</span><p>Конфликты остаются, но теперь они не твоя проблема.</p></article>
+              <article><b>Иллюзия понимания C++</b><span>ур. 5 · 20 маны</span><p>Работает 30 секунд. Потом приходит шаблон.</p></article>
+              <article><b>Телепорт в пятницу, 18:00</b><span>ур. 4 · 20 маны</span><p>Безопасно только при выключенном CI.</p></article>
+              <article><b>Призыв магической девочки</b><span>ур. 6 · 25 маны</span><p>Явится, посмотрит на код и молча уйдёт.</p></article>
+              <article><b>Малый взрыв красоты</b><span>ур. 1 · 5 маны</span><p>Добавляет градиент. Иногда — туда, куда не просили.</p></article>
+            </div>
+            <p class="hint">▸ каждое заклинание расходует ману. ману восстанавливает <button class="linkbtn" data-action="brew" type="button">зелье</button> · бросок d20 решает исход</p>
+          </div>
+        </section>
+
+        <!-- WHOAMI -->
+        <section class="window page" id="page-whoami" data-page="whoami" hidden>
+          <div class="winbar">
+            <span class="win-title">C:\WHOAMI\IDENT.DAT</span>
+            <span class="win-meta">READ ONLY</span>
+          </div>
+          <div class="win-body">
+            <div class="two-col">
+              <div>
+                <dl class="specs">
+                  <dt>имя</dt><dd>вамнедолжнобытьэтоинтересно</dd>
+                  <dt>ник</dt><dd><a href="https://x.com/mentaIlyillgirl" target="_blank" rel="noopener noreferrer">@mentaIlyillgirl</a></dd>
+                  <dt>класс</dt><dd>ведьма / magical girl</dd>
+                  <dt>локация</dt><dd>Нижние Алупы</dd>
+                  <dt>уровень</dt><dd>??? <span class="muted">(демо)</span></dd>
+                  <dt>сервер</dt><dd><span class="status-on">● online</span> · GitHub Pages</dd>
+                  <dt>оружие</dt><dd>метла +1 · один CSS-флексбокс</dd>
+                  <dt>слабость</dt><dd>дедлайны, как у всех</dd>
+                  <dt>био</dt><dd class="bio">«я всего лишь человек.» остальное — <a href="https://x.com/mentaIlyillgirl" target="_blank" rel="noopener noreferrer">в оригинале</a>. здесь пока заготовка, чтобы было куда вставить.</dd>
+                </dl>
+              </div>
+              <div class="terminal-card">
+                <div class="terminal-card-bar">C:\&gt; cat /etc/motd</div>
+                <pre>  <span class="c-pink">/\\_/\\</span>
+ <span class="c-pink">( o.o )</span>   я слежу за тобой
+  <span class="c-pink">&gt; ^ &lt;</span>   и за сервером
+ <span class="c-pink">/|   |\\</span>
+<span class="c-pink">(_|___|_)</span>
+
+<span class="c-dim"># не редактировать без заклинания</span></pre>
+              </div>
+            </div>
+
+            <h3>▌ ССЫЛКИ</h3>
+            <ul class="linklist">
+              <li><span class="arrow">→</span><a href="https://x.com/mentaIlyillgirl" target="_blank" rel="noopener noreferrer">x.com/mentaIlyillgirl</a><span class="muted">— главный твиттер</span></li>
+              <li><span class="arrow">→</span><a href="https://github.com/konovalov-nk" target="_blank" rel="noopener noreferrer">github.com/konovalov-nk</a><span class="muted">— тот, кто собрал эту демку</span></li>
+              <li><span class="arrow">→</span><a href="https://konovalov-nk.github.io/witch-dos/" target="_blank" rel="noopener noreferrer">konovalov-nk.github.io/witch-dos</a><span class="muted">— сама демка</span></li>
+            </ul>
+
+            <p class="hint">▸ это демо. текст можно заменить в <code>index.html</code> — он весь в одном файле</p>
+          </div>
+        </section>
+
+        <!-- DIARY -->
+        <section class="window page" id="page-diary" data-page="diary" hidden>
+          <div class="winbar">
+            <span class="win-title">C:\DIARY\NOTES.TXT</span>
+            <span class="win-meta">3 ЗАПИСИ</span>
+          </div>
+          <div class="win-body">
+            <p class="muted">Демо-записи. Тут будут твои. Честно.</p>
+            <div class="diary">
+              <article>
+                <div class="diary-head"><span class="diary-date">18.11.2026</span><h3>сайт есть</h3></div>
+                <p>Ну вот. Дожили. Осталось понять, что сюда писать. Пока что здесь живёт ведьма, кот и командная строка.</p>
+              </article>
+              <article>
+                <div class="diary-head"><span class="diary-date">17.11.2026</span><h3>HAHA, CLASSIC</h3></div>
+                <p>Сегодня был день. Завтра будет день. Послезавтра — дедлайн, но это уже завтрашняя проблема.</p>
+              </article>
+              <article>
+                <div class="diary-head"><span class="diary-date">01.01.2000</span><h3>Y2K</h3></div>
+                <p>Компьютеры не сломались. Немного обидно. Зато дизайн теперь модный.</p>
+              </article>
+            </div>
+            <p class="hint">▸ введи <code>date</code>, чтобы узнать, какой сейчас год на самом деле</p>
+          </div>
+        </section>
+
+        <!-- GUEST -->
+        <section class="window page" id="page-guest" data-page="guest" hidden>
+          <div class="winbar">
+            <span class="win-title">C:\GUEST\GUESTBOOK.DAT</span>
+            <span class="win-meta">LOCAL ONLY</span>
+          </div>
+          <div class="win-body">
+            <p class="muted">Гостевая книга. Сообщения сохраняются только в твоём браузере — это демка, а не база данных.</p>
+            <div id="guestList" class="guest-list"></div>
+
+            <form id="guestForm" class="guest-form" autocomplete="off">
+              <h3>▌ ОСТАВИТЬ ЗАПИСЬ</h3>
+              <div class="form-row">
+                <label for="guestName">имя</label>
+                <input id="guestName" name="name" maxlength="24" placeholder="гость" required>
+              </div>
+              <div class="form-row">
+                <label for="guestText">сообщение</label>
+                <textarea id="guestText" name="text" maxlength="240" rows="3" placeholder="что-нибудь милое или HAHA, CLASSIC" required></textarea>
+              </div>
+              <div class="form-actions">
+                <button class="bigbtn small" type="submit">ПОДПИСАТЬ</button>
+                <span id="guestStatus" class="form-status" role="status"></span>
+                <button id="guestClear" class="linkbtn" type="button">стереть мои записи</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- LINKS -->
+        <section class="window page" id="page-links" data-page="links" hidden>
+          <div class="winbar">
+            <span class="win-title">C:\LINKS\LINKS.HTM</span>
+            <span class="win-meta">NO 404</span>
+          </div>
+          <div class="win-body">
+            <div class="linkcards">
+              <a class="linkcard" href="https://x.com/mentaIlyillgirl" target="_blank" rel="noopener noreferrer">
+                <span class="lc-kicker">основное</span>
+                <b>X / TWITTER</b>
+                <span class="lc-url">x.com/mentaIlyillgirl</span>
+                <span class="lc-arrow">→</span>
+              </a>
+              <a class="linkcard" href="https://github.com/konovalov-nk" target="_blank" rel="noopener noreferrer">
+                <span class="lc-kicker">код</span>
+                <b>GITHUB</b>
+                <span class="lc-url">github.com/konovalov-nk</span>
+                <span class="lc-arrow">→</span>
+              </a>
+              <a class="linkcard" href="https://konovalov-nk.github.io/witch-dos/" target="_blank" rel="noopener noreferrer">
+                <span class="lc-kicker">демо</span>
+                <b>WITCH-DOS</b>
+                <span class="lc-url">konovalov-nk.github.io/witch-dos</span>
+                <span class="lc-arrow">→</span>
+              </a>
+              <button class="linkcard asbutton" type="button" data-action="haha">
+                <span class="lc-kicker">пасхалка</span>
+                <b>HAHA, CLASSIC</b>
+                <span class="lc-url">нажми, не бойся</span>
+                <span class="lc-arrow">→</span>
+              </button>
+            </div>
+
+            <h3>▌ КНОПКИ 88×31</h3>
+            <div class="badges badges-large">
+              <span class="badge badge-pink">WITCH<br>APPROVED</span>
+              <span class="badge badge-cyan">MADE<br>BY br11k</span>
+              <span class="badge badge-yellow">BEST VIEWED<br>800×600</span>
+              <span class="badge badge-green">NO<br>COOKIES</span>
+              <span class="badge badge-purple">HAHA<br>CLASSIC</span>
+              <span class="badge badge-red">Y2K<br>SURVIVOR</span>
+            </div>
+
+            <div class="webring">
+              <span class="wr-side">←</span>
+              <div><b>WITCH RING</b><br><span class="muted">кольцо магических сайтов · 1 участник</span></div>
+              <span class="wr-side">→</span>
+            </div>
+
+            <dl class="specs small-specs">
+              <dt>движок</dt><dd>руками, без фреймворков</dd>
+              <dt>хостинг</dt><dd>GitHub Pages</dd>
+              <dt>разрешение</dt><dd>любое, но лучше 800×600</dd>
+              <dt>посетитель</dt><dd>№ <span id="visitNum">000042</span></dd>
+            </dl>
+          </div>
+        </section>
+
+        <!-- CONSOLE -->
+        <section class="window termwin" aria-label="Командная строка">
+          <div class="winbar">
+            <span class="win-title">C:\&gt; COMMAND.COM</span>
+            <span class="win-meta">введи help</span>
+          </div>
+          <div id="term" class="term" aria-live="polite"></div>
+          <form id="cmdform" class="cmdline" autocomplete="off">
+            <label for="cmd" class="prompt">C:\<b id="promptPath">HOME</b>&gt;</label>
+            <input id="cmd" name="cmd" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="введи команду или help" aria-label="Команда">
+          </form>
+        </section>
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="side">
+        <section class="window familiar">
+          <div class="winbar">
+            <span class="win-title">FAMILIAR.EXE</span>
+            <span class="win-meta">v1.0</span>
+          </div>
+          <div class="win-body">
+            <pre id="cat" class="cat" aria-label="ASCII-кот"></pre>
+            <div id="catSays" class="bubble">мяу.</div>
+            <button id="petBtn" class="smallbtn" type="button">ПОГЛАДИТЬ</button>
+          </div>
+        </section>
+
+        <section class="window syswin">
+          <div class="winbar">
+            <span class="win-title">SYS\MONITOR</span>
+            <span class="win-meta">LIVE</span>
+          </div>
+          <div class="win-body">
+            <div class="meter"><div class="meter-top"><span>МАГИЯ</span><b id="magicPct">76%</b></div><div class="bar"><i id="magicBar"></i></div></div>
+            <div class="meter"><div class="meter-top"><span>ПАМЯТЬ</span><b id="memPct">83%</b></div><div class="bar"><i id="memBar"></i></div></div>
+            <div class="meter"><div class="meter-top"><span>МЕТЛА</span><b id="broomPct">100%</b></div><div class="bar"><i id="broomBar"></i></div></div>
+
+            <div class="sysline"><span>СЕРВЕР</span><b id="serverState" class="status-on">● online</b></div>
+            <div class="sysline"><span>UPTIME</span><b id="uptime" class="c-yellow">00:00:00</b></div>
+
+            <div class="potion">
+              <div class="potion-top"><span>ЗЕЛЬЕ</span><b><span id="potionCount">0</span> шт.</b></div>
+              <div class="blobs" id="potionBlobs" aria-hidden="true">□□□□□</div>
+              <button id="brewBtn" class="smallbtn wide" type="button">+ СВАРИТЬ</button>
+            </div>
+
+            <button id="speakerBtn" class="smallbtn wide" type="button">♪ ПК-СПИКЕР</button>
+            <p class="mini-note">заклинания тратят ману.<br>зелье её возвращает.</p>
+          </div>
+        </section>
+
+        <section class="window oracle">
+          <div class="winbar">
+            <span class="win-title">ORACLE.EXE</span>
+            <span class="win-meta">8-BALL</span>
+          </div>
+          <div class="win-body">
+            <pre class="oracle-ball" aria-hidden="true">   .-"""-.
+  /  .-.  \
+ |  ( o )  |
+  \  '-'  /
+   '-...-'</pre>
+            <div id="oracleAnswer" class="oracle-answer">спроси меня</div>
+            <button id="oracleBtn" class="smallbtn wide" type="button">СПРОСИТЬ ШАР</button>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <!-- status bar -->
+    <footer class="statusbar">
+      <div class="fkeys">
+        <button type="button" data-fkey="help"><span class="key">F1</span>ПОМОЩЬ</button>
+        <button type="button" data-page="magic"><span class="key">F2</span>МАГИЯ</button>
+        <button type="button" data-page="guest"><span class="key">F3</span>ГОСТИ</button>
+        <button type="button" data-page="links"><span class="key">F4</span>ССЫЛКИ</button>
+        <button type="button" data-page="whoami"><span class="key">F5</span>О СЕБЕ</button>
+        <button type="button" data-page="diary"><span class="key">F6</span>ЗАПИСКИ</button>
+      </div>
+      <div class="status-right">
+        <span>WITCH-DOS 1.0</span>
+        <span class="sep">·</span>
+        <span class="blink-pink">DEMO</span>
+        <span class="sep">·</span>
+        <span>гость № <span id="visitNum2">000042</span></span>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- ══════════════════ DIALOG ══════════════════ -->
+<div id="dialog" class="dialog-backdrop" hidden>
+  <div class="window dialog" role="dialog" aria-modal="true" aria-labelledby="dlgTitle">
+    <div class="winbar">
+      <span class="win-title" id="dlgTitle">СООБЩЕНИЕ</span>
+      <button id="dlgX" class="win-x" type="button" aria-label="Закрыть">×</button>
+    </div>
+    <div class="win-body">
+      <div id="dlgBody" class="dialog-body"></div>
+      <button id="dlgOk" class="bigbtn small" type="button">OK</button>
+    </div>
+  </div>
+</div>
+
+<noscript>
+  <div class="noscript">Для этой демки нужен JavaScript. Без него тут только синий экран — как в жизни.</div>
+</noscript>
+
+<script src="app.js"></script>
+</body>
+</html>
